@@ -8,6 +8,10 @@
 <h1>Registro de Usuario</h1>
 
 <form th:action="@{/usuarios/registrarUsuario}" method="post" th:object="${usuario}">
+
+    <!-- CAMPO ID OCULTO (CRÍTICO para actualizar) -->
+    <input type="hidden" th:field="*{id}">
+
     <!-- Campo: Nombre -->
     <div>
         <label for="nombre">Nombre:</label><br>
@@ -61,7 +65,6 @@
     </div>
 
 </form>
-
 
 </body>
 </html>
