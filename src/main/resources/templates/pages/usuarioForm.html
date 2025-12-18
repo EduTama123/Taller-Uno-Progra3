@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Usuario</title>
+</head>
+<body>
+<h1>Registro de Usuario</h1>
+
+<form th:action="@{/usuarios/registrarUsuario}" method="post" th:object="${usuario}">
+    <!-- Campo: Nombre -->
+    <div>
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" th:field="*{nombre}" required>
+        <p><small>Debe contener solo letras (2-30 caracteres)</small></p>
+    </div>
+
+    <!-- Campo: Apellido -->
+    <div>
+        <label for="apellido">Apellido:</label><br>
+        <input type="text" id="apellido" th:field="*{apellido}" required>
+        <p><small>Debe contener solo letras (2-30 caracteres)</small></p>
+    </div>
+
+    <!-- Campo: Cédula -->
+    <div>
+        <label for="cedula">Cédula:</label><br>
+        <input type="text" id="cedula" th:field="*{cedula}" required>
+        <p><small>10 dígitos numéricos (ejemplo: 1723456789)</small></p>
+    </div>
+
+    <!-- Campo: Dirección -->
+    <div>
+        <label for="direccion">Dirección:</label><br>
+        <input type="text" id="direccion" th:field="*{direccion}" required>
+        <p><small>Ejemplo: Av. Amazonas N12-34 y Colón</small></p>
+    </div>
+
+    <!-- Campo: Teléfono -->
+    <div>
+        <label for="telefono">Teléfono:</label><br>
+        <input type="text" id="telefono" th:field="*{telefono}" required>
+        <p><small>10 dígitos que empiezan con 09 (ejemplo: 0912345678)</small></p>
+    </div>
+
+    <!-- Campo: Edad -->
+    <div>
+        <label for="edad">Edad:</label><br>
+        <input type="number" id="edad" th:field="*{edad}" min="18" max="100" required>
+        <p><small>Debe ser entre 18 y 100 años</small></p>
+    </div>
+
+    <br>
+
+    <!-- Botones -->
+    <div>
+        <button type="submit">Guardar Usuario</button>
+        <a th:href="@{/usuarios}">
+            <button type="button">Volver a la Lista</button>
+        </a>
+    </div>
+
+</form>
+
+
+</body>
+</html>

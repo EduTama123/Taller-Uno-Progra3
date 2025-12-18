@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Usuarios</title>
+</head>
+<body>
+<h1>Lista de Usuarios</h1>
+
+<!-- Formulario de búsqueda -->
+<div>
+    <form th:action="@{/usuarios}" method="get">
+        <label for="buscar">Buscar por nombre o cédula:</label><br>
+        <input type="text" id="buscar" name="buscar" th:value="${buscar}" placeholder="Ingrese nombre o cédula">
+        <button type="submit">Buscar</button>
+        <a th:href="@{/usuarios}">
+            <button type="button">Mostrar Todos</button>
+        </a>
+    </form>
+</div>
+
+<br>
+
+<!-- Enlace para crear nuevo usuario -->
+<div>
+    <a th:href="@{/usuarios/formUsuario}">
+        <button>Nuevo Usuario</button>
+    </a>
+</div>
+
+<br>
+
+<!-- Tabla de usuarios -->
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Cédula</th>
+        <th>Dirección</th>
+        <th>Teléfono</th>
+        <th>Edad</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="usuario : ${usuarios}">
+        <td th:text="${usuario.id}"></td>
+        <td th:text="${usuario.nombre}"></td>
+        <td th:text="${usuario.apellido}"></td>
+        <td th:text="${usuario.cedula}"></td>
+        <td th:text="${usuario.direccion}"></td>
+        <td th:text="${usuario.telefono}"></td>
+        <td th:text="${usuario.edad}"></td>
+        <td>
+            <!-- Enlace para editar (IGUAL que libros) -->
+            <a th:href="@{/usuarios/editarUsuario/}+${usuario.id}">
+                <button>Editar</button>
+            </a>
+
+            <!-- Formulario para eliminar (IGUAL que libros) -->
+            <form th:action="@{/usuarios/eliminarUsuario/}+${usuario.id}" method="post" style="display:inline">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit" onclick="return confirm('¿Está seguro de eliminar este usuario?')">Eliminar</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
