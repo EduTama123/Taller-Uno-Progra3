@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Historial de Tests</title>
+</head>
+<body>
+<h1>Historial de Tests de Ansiedad</h1>
+
+<a th:href="@{/test/formTest}">
+    <button>Realizar Nuevo Test</button>
+</a>
+
+<br><br>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Puntuación</th>
+        <th>Nivel</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="test : ${tests}">
+        <td th:text="${test.id}"></td>
+        <td th:text="${test.puntuacionTotal}"></td>
+        <td th:text="${test.nivelAnsiedad}"></td>
+        <td>
+            <a th:href="@{/test/resultado/{id}(id=${test.id})}">
+                <button>Ver Resultado</button>
+            </a>
+            <a th:href="@{/test/eliminarTest/{id}(id=${test.id})}">
+                <button>Eliminar</button>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
