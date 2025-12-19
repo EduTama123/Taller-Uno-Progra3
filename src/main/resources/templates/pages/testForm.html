@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Test de Ansiedad</title>
+</head>
+<body>
+<h1>Test de Ansiedad - GAD-10</h1>
+
+<div>
+    <p><strong>Instrucciones:</strong></p>
+    <p>Durante las últimas 2 semanas, ¿con qué frecuencia ha experimentado lo siguiente?</p>
+    <p>Seleccione una opción para cada pregunta. Todas las preguntas son obligatorias.</p>
+</div>
+
+<form th:action="@{/test/registrarTest}" method="post" th:object="${testAnsiedad}">
+
+    <!-- Pregunta 1 -->
+    <div>
+        <p>1. Sensación de nerviosismo o inquietud constante</p>
+        <input type="radio" th:field="*{pregunta1}" value="0" required> Nunca (0 puntos)<br>
+        <input type="radio" th:field="*{pregunta1}" value="1"> Varios días (1 punto)<br>
+        <input type="radio" th:field="*{pregunta1}" value="2"> Más de la mitad de los días (2 puntos)<br>
+        <input type="radio" th:field="*{pregunta1}" value="3"> Casi todos los días (3 puntos)
+    </div>
+
+    <!-- Pregunta 2 -->
+    <div>
+        <p>2. No poder dejar de preocuparse o no poder controlar la preocupación</p>
+        <input type="radio" th:field="*{pregunta2}" value="0" required> Nunca<br>
+        <input type="radio" th:field="*{pregunta2}" value="1"> Varios días<br>
+        <input type="radio" th:field="*{pregunta2}" value="2"> Más de la mitad de los días<br>
+        <input type="radio" th:field="*{pregunta2}" value="3"> Casi todos los días
+    </div>
+
+    <!-- Pregunta 3 -->
+    <div>
+        <p>3. Preocuparse demasiado por varios asuntos (“sobre pensar las cosas”)</p>
+        <input type="radio" th:field="*{pregunta3}" value="0" required> Nunca<br>
+        <input type="radio" th:field="*{pregunta3}" value="1"> Varios días<br>
+        <input type="radio" th:field="*{pregunta3}" value="2"> Más de la mitad de los días<br>
+        <input type="radio" th:field="*{pregunta3}" value="3"> Casi todos los días
+    </div>
+
+    <!-- Pregunta 4 -->
+    <div>
+        <p>4. Problemas para relajarse</p>
+        <input type="radio" th:field="*{pregunta4}" value="0" required> Nunca<br>
+        <input type="radio" th:field="*{pregunta4}" value="1"> Varios días<br>
+        <input type="radio" th:field="*{pregunta4}" value="2"> Más de la mitad de los días<br>
+        <input type="radio" th:field="*{pregunta4}" value="3"> Casi todos los días
+    </div>
+
+    <!-- Pregunta 5 -->
+    <div>
+        <p>5. Estar tan inquieto/a que le resulta difícil permanecer tranquilo/a</p>
+        <input type="radio" th:field="*{pregunta5}" value="0" required> Nunca<br>
+        <input type="radio" th:field="*{pregunta5}" value="1"> Varios días<br>
+        <input type="radio" th:field="*{pregunta5}" value="2"> Más de la mitad de los días<br>
+        <input type="radio" th:field="*{pregunta5}" value="3"> Casi todos los días
+    </div>
+
+    <!-- Pregunta 6 -->
+    <div>
+        <p>6. Molestarse o estar de mal humor con facilidad</p>
+        <input type="radio" th:field="*{pregunta6}" value="0" required> Nunca<br>
+        <input type="radio" th:field="*{pregunta6}" value="1"> Varios días<br>
+        <input type="radio" th:field="*{pregunta6}" value="2"> Más de la mitad de los días<br>
+        <input type="radio" th:field="*{pregunta6}" value="3"> Casi todos los días
+    </div>
+
+    <!-- Pregunta 7 -->
+    <div>
+        <p>7. Temor de que ocurra algo malo en algún momento</p>
+        <input type="radio" th:field="*{pregunta7}" value="0" required> Nunca<br>
+        <input type="radio" th:field="*{pregunta7}" value="1"> Varios días<br>
+        <input type="radio" th:field="*{pregunta7}" value="2"> Más de la mitad de los días<br>
+        <input type="radio" th:field="*{pregunta7}" value="3"> Casi todos los días
+    </div>
+
+    <!-- Pregunta 8 -->
+    <div>
+        <p>8. Dificultades para dormir o descansar adecuadamente</p>
+        <input type="radio" th:field="*{pregunta8}" value="0" required> Nunca<br>
+        <input type="radio" th:field="*{pregunta8}" value="1"> Varios días<br>
+        <input type="radio" th:field="*{pregunta8}" value="2"> Más de la mitad de los días<br>
+        <input type="radio" th:field="*{pregunta8}" value="3"> Casi todos los días
+    </div>
+
+    <!-- Pregunta 9 -->
+    <div>
+        <p>9. Tensión muscular o dolores físicos sin alguna razón</p>
+        <input type="radio" th:field="*{pregunta9}" value="0" required> Nunca<br>
+        <input type="radio" th:field="*{pregunta9}" value="1"> Varios días<br>
+        <input type="radio" th:field="*{pregunta9}" value="2"> Más de la mitad de los días<br>
+        <input type="radio" th:field="*{pregunta9}" value="3"> Casi todos los días
+    </div>
+
+    <!-- Pregunta 10 -->
+    <div>
+        <p>10. Falta de concentración o lapsos mentales (“mente en blanco”)</p>
+        <input type="radio" th:field="*{pregunta10}" value="0" required> Nunca<br>
+        <input type="radio" th:field="*{pregunta10}" value="1"> Varios días<br>
+        <input type="radio" th:field="*{pregunta10}" value="2"> Más de la mitad de los días<br>
+        <input type="radio" th:field="*{pregunta10}" value="3"> Casi todos los días
+    </div>
+
+    <br>
+    <button type="submit">Calcular Resultado</button>
+    <a th:href="@{/test}">
+        <button type="button">Ver Historial</button>
+    </a>
+</form>
+
+<div>
+    <p><small>Este test se basa en el GAD-7 ampliado. Es una herramienta de screening, no un diagnóstico profesional.</small></p>
+</div>
+</body>
+</html>

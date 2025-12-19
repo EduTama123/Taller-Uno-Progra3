@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado del Test de Ansiedad</title>
+</head>
+<body>
+
+<!-- Resultado principal -->
+<div>
+    <h3>Su resultado para el Test de ansiedad fue:</h3>
+    <h2 th:text="${test.nivelAnsiedad}"></h2>
+    <p>Puntuación Total: <span th:text="${test.puntuacionTotal}"></span>/30</p>
+</div>
+
+<hr>
+
+<!-- Explicación de puntuación -->
+<div>
+    <h4>Sobre su puntuación</h4>
+    <p>A cada respuesta se asigna una puntuación entre 0-3. Haga clic en "sus respuestas" abajo para ver su puntuación para cada pregunta. Se agregan éstas para calcular su Puntuación Total.</p>
+
+    <p><strong>Nunca = 0; Varios días = 1; Más de la mitad de los días = 2; Casi todos los días = 3</strong></p>
+</div>
+
+<!-- Interpretación -->
+<div>
+    <h4>Interpretación de la Puntuación Total</h4>
+    <ul>
+        <li><strong>0-4:</strong> ansiedad mínima</li>
+        <li><strong>5-9:</strong> ansiedad leve</li>
+        <li><strong>10-14:</strong> ansiedad moderada</li>
+        <li><strong>15-21:</strong> ansiedad severa</li>
+        <li><strong>22-30:</strong> ansiedad muy severa</li>
+    </ul>
+</div>
+
+<!-- Recomendaciones -->
+<div>
+    <h4>Para monitorizar la severidad de su ansiedad con el tiempo:</h4>
+    <ul>
+        <li>Imprima o mándese por correo electrónico los resultados de su test de ansiedad (servirá como su línea de base).</li>
+        <li>Continúe haciéndose tests en intervalos regulares (por ejemplo, cada 2 semanas)</li>
+        <li>Imprima o mándese por correo electrónico sus resultados y compártalos con alguien que le está ayudando en su recuperación.</li>
+    </ul>
+</div>
+
+<hr>
+
+<!-- Tabla de respuestas -->
+<div>
+    <h4>Sus respuestas</h4>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Pregunta</th>
+            <th>Respuesta</th>
+            <th>Puntos</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1. Sensación de nerviosismo o inquietud constante</td>
+            <td th:text="${test.pregunta1 == 0 ? 'Nunca' : (test.pregunta1 == 1 ? 'Varios días' : (test.pregunta1 == 2 ? 'Más de la mitad de los días' : 'Casi todos los días'))}"></td>
+            <td th:text="${test.pregunta1}"></td>
+        </tr>
+        <tr>
+            <td>2. No poder dejar de preocuparse o no poder controlar la preocupación</td>
+            <td th:text="${test.pregunta2 == 0 ? 'Nunca' : (test.pregunta2 == 1 ? 'Varios días' : (test.pregunta2 == 2 ? 'Más de la mitad de los días' : 'Casi todos los días'))}"></td>
+            <td th:text="${test.pregunta2}"></td>
+        </tr>
+        <tr>
+            <td>3. Preocuparse demasiado por varios asuntos (“sobre pensar las cosas”)</td>
+            <td th:text="${test.pregunta3 == 0 ? 'Nunca' : (test.pregunta3 == 1 ? 'Varios días' : (test.pregunta3 == 2 ? 'Más de la mitad de los días' : 'Casi todos los días'))}"></td>
+            <td th:text="${test.pregunta3}"></td>
+        </tr>
+        <tr>
+            <td>4. Problemas para relajarse</td>
+            <td th:text="${test.pregunta4 == 0 ? 'Nunca' : (test.pregunta4 == 1 ? 'Varios días' : (test.pregunta4 == 2 ? 'Más de la mitad de los días' : 'Casi todos los días'))}"></td>
+            <td th:text="${test.pregunta4}"></td>
+        </tr>
+        <tr>
+            <td>5. Estar tan inquieto/a que le resulta difícil permanecer tranquilo</td>
+            <td th:text="${test.pregunta5 == 0 ? 'Nunca' : (test.pregunta5 == 1 ? 'Varios días' : (test.pregunta5 == 2 ? 'Más de la mitad de los días' : 'Casi todos los días'))}"></td>
+            <td th:text="${test.pregunta5}"></td>
+        </tr>
+        <tr>
+            <td>6. Molestarse o estar de mal humor con facilidad</td>
+            <td th:text="${test.pregunta6 == 0 ? 'Nunca' : (test.pregunta6 == 1 ? 'Varios días' : (test.pregunta6 == 2 ? 'Más de la mitad de los días' : 'Casi todos los días'))}"></td>
+            <td th:text="${test.pregunta6}"></td>
+        </tr>
+        <tr>
+            <td>7. Temor de que ocurra algo malo en algún momento</td>
+            <td th:text="${test.pregunta7 == 0 ? 'Nunca' : (test.pregunta7 == 1 ? 'Varios días' : (test.pregunta7 == 2 ? 'Más de la mitad de los días' : 'Casi todos los días'))}"></td>
+            <td th:text="${test.pregunta7}"></td>
+        </tr>
+        <tr>
+            <td>8. Dificultades para dormir o descansar adecuadamente</td>
+            <td th:text="${test.pregunta8 == 0 ? 'Nunca' : (test.pregunta8 == 1 ? 'Varios días' : (test.pregunta8 == 2 ? 'Más de la mitad de los días' : 'Casi todos los días'))}"></td>
+            <td th:text="${test.pregunta8}"></td>
+        </tr>
+        <tr>
+            <td>9. Tensión muscular o dolores físicos sin alguna razón</td>
+            <td th:text="${test.pregunta9 == 0 ? 'Nunca' : (test.pregunta9 == 1 ? 'Varios días' : (test.pregunta9 == 2 ? 'Más de la mitad de los días' : 'Casi todos los días'))}"></td>
+            <td th:text="${test.pregunta9}"></td>
+        </tr>
+        <tr>
+            <td>10. Falta de concentración o lapsos mentales (“mente en blanco”)</td>
+            <td th:text="${test.pregunta10 == 0 ? 'Nunca' : (test.pregunta10 == 1 ? 'Varios días' : (test.pregunta10 == 2 ? 'Más de la mitad de los días' : 'Casi todos los días'))}"></td>
+            <td th:text="${test.pregunta10}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<hr>
+<!-- Diagnostico informativo -->
+<div>
+    <h4>Interpretación de sus resultados</h4>
+    <p>Sus resultados indican que presenta con algunos síntomas de <strong th:text="${test.nivelAnsiedad}"></strong>.</p>
+
+    <p><strong>Nota importante:</strong> Estos resultados no constituyen un diagnóstico. Puede hablar con un doctor o terapeuta para obtener un diagnóstico y/o acceder a terapia o medicamentos. Compartir estos resultados con alguien en quien confíe puede ser un excelente lugar para comenzar.</p>
+</div>
+
+<!-- Botones de navegacion -->
+<div>
+    <a th:href="@{/test/formTest}">
+        <button>Realizar Nuevo Test</button>
+    </a>
+    <a th:href="@{/test}">
+        <button>Ver Historial de Tests</button>
+    </a>
+</div>
+
+</body>
+</html>
