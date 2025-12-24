@@ -3,11 +3,32 @@ body{
     color: #333;
     margin: 0;
     padding: 0;
+    position: relative;
+    z-index: 0;
 }
+
+body::before {
+  content: "";
+  position: fixed; /* cubre toda la pantalla */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    -45deg,
+    #6FAED9,
+    #6FAED9 8px,
+    #F5F7FA 8px,
+    #F5F7FA 40px
+  );
+  opacity: 0.08; /* solo afecta al pseudo-elemento */
+  z-index: -1; /* queda detrás del contenido */
+}
+
 /*barra de navegacion*/
 /*primer nav*/
 .navbar-top {
-  background: linear-gradient(135deg, #2C3E50, #34495E);
+  background: linear-gradient(135deg, #3A5F73, #4F7C8A);
   color: #fff;
 }
 
@@ -15,7 +36,7 @@ body{
   color: #fff;
 }
 .btn-nav {
-  background-color: #27AE60;
+  background-color: #5FA58A;
   color: #fff;
   padding: 0.5rem 1rem;
   border-radius: 8px;
@@ -39,11 +60,11 @@ body{
   transition: color 0.3s ease, border-bottom 0.3s ease;
 }
 .nav-link:hover {
-  color: #27AE60; /* verde acento */
+  color: #27AE60;
   border-bottom: 2px solid #27AE60;
 }
 .footerBg {
-    background: linear-gradient(135deg, #2C3E50, #27AE60);
+    background: linear-gradient(135deg, #3A5F73, #5FA58A);
     color: #f0f0f0;
     padding: 3rem 2rem;
 }
@@ -81,7 +102,7 @@ body{
     align-items: center;
     text-align: center;
     padding: 2rem;
-    background: linear-gradient(135deg, #01BAEF, #4A90E2);
+    background: linear-gradient(135deg, #6FAED9, #8FC1A9);
     color: #fff;
 }
 /*titulo principal*/
@@ -103,7 +124,7 @@ body{
 .hero .btn-primary {
     display: inline-block;
     padding: 0.75rem 1.5rem;
-    background-color: #27AE60;
+    background-color: #5FA58A;
     color: #fff;
     font-weight: bold;
     border-radius: 8px;
@@ -114,6 +135,38 @@ body{
     background-color: #219150;
     transform: translateY(-3px);
 }
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-100%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(100%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInTop {
+  from { opacity: 0; transform: translateY(-100%); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInBottom {
+  from { opacity: 0; transform: translateY(100%); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/*clases que activan la animación*/
+.animate-left { animation: slideInLeft 1s ease forwards; }
+.animate-right { animation: slideInRight 1s ease forwards; }
+.animate-top { animation: slideInTop 1s ease forwards; }
+.animate-bottom { animation: slideInBottom 1s ease forwards; }
+
+.hiddenTitle, .hiddenParagraph, .hiddenSubtitle{
+  opacity: 0;
+}
+
+
+
 /*secciones*/
 .section {
     min-height: 100vh;
@@ -124,17 +177,65 @@ body{
 }
 /*preguntas - acordeon*/
 .section-questions {
-    background-color: #F8F0FF;
+    background-color: #F3F0FA;
 }
 
-/*servicios*/
-.section-services {
-    background-color: #F0F8FF;
+/*servcios*/
+.serviceGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.serviceCard {
+  background-color: #F9FBFA;
+  border: 1px solid #E2ECE8;
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.serviceCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.8);
+}
+
+.serviceIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.serviceCard h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2F3E46;
+  margin-bottom: 0.5rem;
+}
+
+.serviceCard p {
+  color: #5C6F73;
+  line-height: 1.6;
+}
+.serviceIcon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1rem;
+  object-fit: contain;
+  filter: grayscale(20%);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.serviceCard:hover .serviceIcon {
+  transform: scale(1.1);
+  filter: grayscale(0%);
 }
 
 /*beneficios*/
 .section-benefits {
-    background-color: #A5D6A7;
+    background-color: #EEF4F2;
 }
 .section-benefits .subtitle {
   margin-bottom: 2rem;
@@ -199,24 +300,24 @@ body{
     font-weight: 700;
     color: #2C3E50;
     margin-bottom: 1rem;
-    border-left: 6px solid #27AE60;
+    border-left: 6px solid #5FA58A;
     padding-left: 0.75rem;
     transition: color 0.3s ease;
 }
 .title:hover {
-    color: #27AE60;
+    color: #5FA58A;
 }
 .subtitle {
     font-size: 1.8rem;
     font-weight: 600;
     color: #34495E;
-    border-bottom: 2px solid #27AE60;
+    border-bottom: 2px solid #5FA58A;
     padding-bottom: 0.3rem;
     display: inline-block;
     transition: color 0.3s ease;
 }
 .subtitle:hover {
-    color: #27AE60;
+    color: #5FA58A;
 }
 /*texto*/
 .introText, .textos {
@@ -264,28 +365,55 @@ body{
     gap: 2rem;
     padding: 2rem;
 }
-.benefitCard{
-    background-color: #E8F5E9;
-    border: 1px solid #7ED321;
-    border-radius: 8px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    max-width: 300px;
-    flex: 1 1 280px;
-    transition: all 0.3s ease;
+.flipCard {
+  background: transparent;
+  width: 300px;
+  height: 400px;
+  perspective: 1000px;
 }
-.benefitCard:hover{
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    border-color: #38A700;
-    background-color: #F0FFF4;
+
+.flipCardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
 }
-.benefitCard:hover h3{
-    color: #38A700;
+
+.flipCard:hover .flipCardInner {
+  transform: rotateY(180deg);
 }
-.benefitCard:hover p{
-    color: #333;
+
+.flipCardFront, .flipCardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
+
+/* Cara frontal */
+.flipCardFront {
+  background-color: rgba(255,255,255,0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Cara trasera */
+.flipCardBack {
+  background-color: rgba(95, 165, 138, 0.3);
+  color: #fff;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 .cardTitle {
     font-size: 1.4rem;
     font-weight: 600;
@@ -301,7 +429,7 @@ body{
 
 /*contacto*/
 #contact.section {
-    background: linear-gradient(135deg, #01BAEF, #4A90E2);
+    background: linear-gradient(135deg, #6FAED9, #8FC1A9);
     color: #fff;
     text-align: center;
     padding: 6rem 2rem;
@@ -323,18 +451,18 @@ body{
 }
 #contactButton{
     display: inline-block;
-        padding: 1rem 2rem;
-        background-color: #27AE60;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 12px;
-        font-weight: bold;
-        position: relative;
-        z-index: 0;
-        transition: background-color 0.3s ease, transform 0.3s ease;
+    padding: 1rem 2rem;
+    background-color: #6FAED9;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: bold;
+    position: relative;
+    z-index: 0;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 #contactButton:hover {
-    background-color: #219150;
+    background-color: #6FAED9;
     transform: translateY(-3px);
 }
 
@@ -344,7 +472,7 @@ body{
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: #4A90E2;
+    background-color: #6FAED9;
     left: 0;
     top: 0;
     border-radius: 10px;
@@ -354,8 +482,8 @@ body{
     content:"";
     background: linear-gradient(
     45deg,
-    #FBFBFF, #4A90E2, #FBFBFF, #4A90E2,
-    #FBFBFF, #4A90E2, #FBFBFF, #4A90E2
+    #FBFBFF, #6FAED9, #FBFBFF, #6FAED9,
+    #FBFBFF, #6FAED9, #FBFBFF, #6FAED9
     );
     position: absolute;
     top: -2px;

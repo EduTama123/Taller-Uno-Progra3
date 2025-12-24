@@ -1,22 +1,21 @@
+.pageContainer {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
 *contenedor del titulo*/
 page-header {
   display: flex;
+  justify-content: center;
   margin-top: 3rem;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
   margin-bottom: 2rem;
+  border-top: 1rem;
 }
 
-.page-title{
-  font-size: 2rem;
-  font-weight: 700;
-  color: #2C3E50;
-  border-bottom: 3px solid #27AE60;
-  padding-bottom: 0.5rem;
-  text-align: center;
+.page-header .page-title {
+  width: 100%;
+  text-align: left;
 }
-
 
 /*formulario de busqueda*/
 .search-container{
@@ -76,7 +75,7 @@ page-header {
 .btn-search,
 .btn-newuser,
 .btn-edit {
-  background-color: #27AE60;
+  background-color: #5FA58A;
   color: #fff;
 }
 
