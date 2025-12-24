@@ -19,9 +19,6 @@
                 <img th:src="@{images/pruebaEstres.png}" class="h-7" alt="CureStress Logo" />
                 <span class="self-center text-xl font-semibold whitespace-nowrap">CureStress</span>
             </a>
-            <div class="flex items-center space-x-6 rtl:space-x-reverse">
-                <a href="#" class="btn-nav">Login</a>
-            </div>
         </div>
     </nav>
 
@@ -40,8 +37,8 @@
 </header>
 
 <section class="hero">
-    <h1>Gestiona tu Ansiedad, Recupera tu Bienestar</h1>
-    <p>Programas especializados para estudiantes y profesionales que buscan equilibrio y productividad.</p>
+    <h1 class="hiddenTitle">Gestiona tu Ansiedad, Recupera tu Bienestar</h1>
+    <p class="hiddenParagraph">Programas especializados para estudiantes y profesionales que buscan equilibrio y productividad.</p>
     <a href="#contact" class="btn-primary">Comienza ahora</a>
 </section>
 
@@ -89,14 +86,14 @@
 
     <!--encabezado principal-->
     <section id="hero" class="section section-hero">
-        <h1 class="title">Gestión de Ansiedad Laboral y Estudiantil</h1>
-        <p class="introText">Brindamos herramientas prácticas y acompañamiento profesional para enfrentar el estrés y la ansiedad
+        <h1 class="title hiddenTitle">Gestión de Ansiedad Laboral y Estudiantil</h1>
+        <p class="introText hiddenParagraph">Brindamos herramientas prácticas y acompañamiento profesional para enfrentar el estrés y la ansiedad
             en entornos laborales y académicos, promoviendo el bienestar integral y la productividad.
         </p>
     </section>
     <!--informacion-->
     <section id="questions" class="section section-questions">
-        <h2 class="subtitle">Preguntas</h2>
+        <h2 class="subtitle hiddenSubtitle">Preguntas</h2>
         <div id="accordion-collapse" data-accordion="collapse" class="bg-white rounded-base border border-default overflow-hidden shadow-xs">
             <h2 id="accordion-collapse-heading-1">
                 <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-body rounded-t-base border border-t-0 border-x-0 border-b-default hover:text-heading hover:bg-neutral-secondary-medium gap-3" data-accordion-target="#accordion-collapse-body-1" aria-expanded="true" aria-controls="accordion-collapse-body-1">
@@ -135,52 +132,118 @@
     </section>
     <!--servicios-->
     <section id="services" class="section section-services">
-        <h2 class="subtitle">Nuestros Servicios</h2>
-        <ul class="serviceList">
-            <li class="serviceItem">Sesiones de orientación psicológica y coaching.</li>
-            <li class="serviceItem">Talleres de manejo del estrés en equipos de trabajo.</li>
-            <li class="serviceItem">Programas de apoyo para estudiantes en época de exámenes.</li>
-            <li class="serviceItem">Recursos digitales: guías, podcasts y ejercicios de relajación.</li>
-        </ul>
+        <h2 class="title hiddenTitle">Nuestros Servicios</h2>
+        <p class="introText hiddenParagraph">
+            Ofrecemos soluciones integrales orientadas a reducir la ansiedad y mejorar el bienestar
+            emocional en entornos académicos y laborales.
+        </p>
+
+        <div class="serviceGrid">
+
+            <div class="serviceCard">
+                <img th:src="@{images/psicologia.png}" alt="Orientación psicológica" class="serviceIcon">
+                <h3>Orientación Psicológica</h3>
+                <p>Acompañamiento profesional personalizado para el manejo del estrés y la ansiedad.</p>
+            </div>
+
+            <div class="serviceCard">
+                <img th:src="@{images/taller.png}" alt="Talleres grupales" class="serviceIcon">
+                <h3>Talleres Grupales</h3>
+                <p>Sesiones prácticas enfocadas en técnicas de relajación y trabajo emocional.</p>
+            </div>
+
+            <div class="serviceCard">
+                <img th:src="@{images/estudiante.png}" alt="Apoyo académico" class="serviceIcon">
+                <h3>Apoyo Académico</h3>
+                <p>Programas especiales para estudiantes en periodos de exámenes y alta presión.</p>
+            </div>
+
+            <div class="serviceCard">
+                <img th:src="@{images/recursos.png}" alt="Recursos digitales" class="serviceIcon">
+                <h3>Recursos Digitales</h3>
+                <p>Guías, audios y ejercicios diseñados para la autorregulación emocional.</p>
+            </div>
+
+        </div>
     </section>
+
     <!--beneficios-->
     <section id="benefits" class="section section-benefits">
-        <h2 class="subtitle">Beneficios</h2>
-        <p class="textos">
+        <h2 class="subtitle hiddenSubtitle">Beneficios</h2>
+        <p class="textos hiddenParagraph">
             Implementar estrategias de gestión de ansiedad ayuda a mejorar la concentración, la comunicación
             y la calidad de vida. Nuestros programas están diseñados para adaptarse a las necesidades de cada persona.
         </p>
         <div class="benefitGrid">
 
-            <div class="benefitCard flowCard">
-                <img th:src="@{https://i.postimg.cc/1zmZM9Nw/imagen1.jpg}" alt="Actitud positiva" class="w-full h-48 object-cover rounded-t-lg">
-                <div class="p-4">
-                    <h3 class="cardTitle">Bienestar emocional</h3>
-                    <p class="cardText">Aprende técnicas de relajación y mindfulness.</p>
+            <!-- Tarjeta 1 -->
+            <div class="flipCard">
+                <div class="flipCardInner">
+                    <!-- Cara frontal -->
+                    <div class="flipCardFront">
+                        <img th:src="@{https://i.postimg.cc/1zmZM9Nw/imagen1.jpg}" alt="Actitud positiva" class="w-full h-48 object-cover rounded-t-lg">
+                        <div class="p-4">
+                            <h3 class="cardTitle">Bienestar emocional</h3>
+                            <p class="cardText">Aprende técnicas de relajación y mindfulness.</p>
+                        </div>
+                    </div>
+                    <!-- Cara trasera -->
+                    <div class="flipCardBack">
+                        <img th:src="@{https://i.postimg.cc/fbzh5w0f/imagen2.jpg}" alt="Imagen reverso" class="w-full h-48 object-cover rounded-t-lg">
+                        <div class="p-4">
+                            <h3 class="cardTitle">Más detalles</h3>
+                            <p class="cardText">Descubre ejercicios prácticos para tu día a día.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="benefitCard flowCard">
-                <img th:src="@{https://i.postimg.cc/vmYdXQ67/imagen4.jpg}" alt="Mayor productividad" class="w-full h-48 object-cover rounded-t-lg">
-                <div class="p-4">
-                    <h3 class="cardTitle">Mayor productividad</h3>
-                    <p class="cardText">Reduce distracciones y mejora tu rendimiento.</p>
+
+            <!-- Tarjeta 2 -->
+            <div class="flipCard">
+                <div class="flipCardInner">
+                    <div class="flipCardFront">
+                        <img th:src="@{https://i.postimg.cc/vmYdXQ67/imagen4.jpg}" alt="Mayor productividad" class="w-full h-48 object-cover rounded-t-lg">
+                        <div class="p-4">
+                            <h3 class="cardTitle">Mayor productividad</h3>
+                            <p class="cardText">Reduce distracciones y mejora tu rendimiento.</p>
+                        </div>
+                    </div>
+                    <div class="flipCardBack">
+                        <img th:src="@{https://i.postimg.cc/DzvK52bd/imagen3.jpg}" alt="Imagen reverso" class="w-full h-48 object-cover rounded-t-lg">
+                        <div class="p-4">
+                            <h3 class="cardTitle">Tips adicionales</h3>
+                            <p class="cardText">Organiza tu tiempo y potencia tu concentración.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="benefitCard flowCard">
-                <img th:src="@{https://i.postimg.cc/DzvK52bd/imagen3.jpg}" alt="Ambiente positivo" class="w-full h-48 object-cover rounded-t-lg">
-                <div class="p-4">
-                    <h3 class="cardTitle">Ambiente positivo</h3>
-                    <p class="cardText">Fomenta relaciones saludables en el trabajo y estudio.</p>
+
+            <!-- Tarjeta 3 -->
+            <div class="flipCard">
+                <div class="flipCardInner">
+                    <div class="flipCardFront">
+                        <img th:src="@{https://i.postimg.cc/DzvK52bd/imagen3.jpg}" alt="Ambiente positivo" class="w-full h-48 object-cover rounded-t-lg">
+                        <div class="p-4">
+                            <h3 class="cardTitle">Ambiente positivo</h3>
+                            <p class="cardText">Fomenta relaciones saludables en el trabajo y estudio.</p>
+                        </div>
+                    </div>
+                    <div class="flipCardBack">
+                        <img th:src="@{https://i.postimg.cc/1zmZM9Nw/imagen1.jpg}" alt="Imagen reverso" class="w-full h-48 object-cover rounded-t-lg">
+                        <div class="p-4">
+                            <h3 class="cardTitle">Más información</h3>
+                            <p class="cardText">Construye espacios colaborativos y motivadores.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
     </section>
 
     <!--contacto-->
     <section id="contact" class="section section-contact">
-        <h2 class="subtitle">Contáctanos</h2>
-        <p class="textos">
+        <h2 class="subtitle hiddenSubtitle">Contáctanos</h2>
+        <p class="textos hiddenParagraph">
             ¿Quieres más información o agendar una sesión? Escríbenos y empieza tu camino hacia una vida más tranquila.
         </p>
         <a id="contactButton" href="#contact-form">Solicitar información</a>
@@ -238,5 +301,6 @@
         </div>
     </div>
 </footer>
+<script th:src="@{js/index.js}"></script>
 </body>
 </html>
