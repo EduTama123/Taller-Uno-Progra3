@@ -26,7 +26,7 @@ public class SecurityConfig {
                         .requestMatchers("/", "/inicio", "/login", "/cuentas/formCuenta", "/cuentas/registrarCuenta").permitAll()
                         .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
                         //asignar privilegio por roles
-                        .requestMatchers("/cuentas/**", "/admin/**", "/test/**").hasRole("ADMIN")
+                        .requestMatchers("/cuentas/**", "/admin/**").hasRole("ADMIN")
                         .requestMatchers("/test/**").hasAnyRole("ADMIN", "USUARIO", "ESPECIALISTA")
                         .anyRequest().authenticated()
                 )

@@ -28,9 +28,9 @@ public class LoginController {
         if (role.equals("ROLE_ADMIN")){
             return "redirect:/admin";
         } else if (role.equals("ROLE_ESPECIALISTA")){
-            return "redirect:/libros";
+            return "redirect:/test";
         }else if (role.equals("ROLE_USUARIO")){
-            return "redirect:/libros";
+            return "redirect:/test";
         }
         //parametro error por default
         return "redirect:/login?error";
