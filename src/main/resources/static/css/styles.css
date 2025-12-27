@@ -300,8 +300,10 @@ body::before {
     font-weight: 700;
     color: #2C3E50;
     margin-bottom: 1rem;
+    margin-top: 1rem;
     border-left: 6px solid #5FA58A;
     padding-left: 0.75rem;
+    padding-top: 1rem;
     transition: color 0.3s ease;
 }
 .title:hover {
