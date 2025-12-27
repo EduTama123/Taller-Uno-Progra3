@@ -1,0 +1,120 @@
+/*contenedor principal del test*/
+.test-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  background-color: #F9FAFB;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/*encabezado*/
+.test-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.test-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2C3E50;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+/*instrucciones*/
+.test-instructions {
+  margin-bottom: 2rem;
+  color: #34495E;
+  font-size: 1rem;
+}
+
+/*formulario*/
+.test-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/*preguntas*/
+.test-question p {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #2C3E50;
+}
+
+.test-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding-left: 1rem;
+}
+
+.test-options label {
+  font-weight: 500;
+  color: #333;
+}
+
+/*botones*/
+.test-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btn-test-submit,
+.btn-test-history {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/*boton verde*/
+.btn-test-submit {
+  background-color: #5FA58A;
+  color: #fff;
+}
+
+.btn-test-submit:hover {
+  background-color: #219150;
+  transform: translateY(-2px);
+}
+
+/*boton gris*/
+.btn-test-history {
+  background-color: #E0E0E0;
+  color: #333;
+}
+
+.btn-test-history:hover {
+  background-color: #BDBDBD;
+  transform: translateY(-2px);
+}
+
+/*div span*/
+.test-footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+}
+/*barra de progreso*/
+.progress-container {
+  width: 100%;
+  background-color: #E0E0E0;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  height: 20px;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  background-color: #5FA58A;
+  transition: width 0.3s ease;
+}
