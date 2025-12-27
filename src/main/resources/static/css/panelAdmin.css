@@ -1,0 +1,267 @@
+.admin-panel {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: white;
+    min-height: calc(100vh - 200px);
+    padding: 40px 20px;
+}
+
+/*titulo*/
+.text-center .admin-title {
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(90deg, #5FA58A, #219150);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 4px rgba(95, 165, 138, 0.1);
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.text-center .admin-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 4px;
+    background: linear-gradient(90deg, #5FA58A, #219150);
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(95, 165, 138, 0.2);
+}
+
+.admin-subtitle {
+    color: #6b7280;
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/*secciones*/
+.grid {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/*secciones panel*/
+.admin-section {
+    border: 1px solid #e5e7eb;
+    background: white;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-section:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transform: translateY(-5px);
+    border-color: #c6e6d8;
+}
+
+/*titulos centrados*/
+.section-title {
+    position: relative;
+    padding-bottom: 12px;
+    color: #1f2937;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, #5FA58A, #219150);
+    border-radius: 2px;
+}
+
+.section-description {
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 24px;
+}
+
+/*botones*/
+.action-buttons {
+    margin-top: auto;
+}
+
+.btn {
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    min-height: 50px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.btn-users {
+    background: linear-gradient(135deg, #5FA58A, #4a8c72);
+}
+
+.btn-users:hover {
+    background: linear-gradient(135deg, #4a8c72, #3a7a60);
+}
+
+.btn-new-user {
+    background: linear-gradient(135deg, #219150, #1a7a40);
+}
+
+.btn-new-user:hover {
+    background: linear-gradient(135deg, #1a7a40, #136630);
+}
+
+.btn-books {
+    background: linear-gradient(135deg, #3A5F73, #5FA58A);
+}
+
+.btn-books:hover {
+    background: linear-gradient(135deg, #2A4D5F, #4a8c72);
+}
+
+.btn-new-book {
+    background: linear-gradient(135deg, #5FA58A, #219150);
+}
+
+.btn-new-book:hover {
+    background: linear-gradient(135deg, #4a8c72, #1a7a40);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.admin-section {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.admin-section:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.admin-section:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+@media (max-width: 768px) {
+    .admin-title {
+        font-size: 28px;
+    }
+
+    .admin-subtitle {
+        font-size: 16px;
+        padding: 0 20px;
+    }
+
+    .section-title {
+        font-size: 20px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .admin-section {
+        padding: 20px;
+    }
+
+    .btn {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-title {
+        font-size: 24px;
+    }
+
+    .admin-panel {
+        padding: 20px 10px;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+
+    .admin-subtitle {
+        font-size: 15px;
+    }
+}
+
+/*efecto pa las tarjetas*/
+.admin-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #5FA58A, #219150, #5FA58A);
+    background-size: 200% 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    animation: gradientShift 3s ease infinite;
+}
+
+.admin-section:hover::before {
+    opacity: 1;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.section-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.action-buttons {
+    width: 100%;
+}

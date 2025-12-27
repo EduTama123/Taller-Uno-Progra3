@@ -32,6 +32,7 @@
                     <li><a th:href="@{/usuarios/formUsuario}" class="nav-link">Formulario</a></li>
                     <li><a th:href="@{/test}" class="nav-link">Historial de test</a></li>
                     <li><a th:href="@{/test/formTest}" class="nav-link">Test</a></li>
+                    <li><a th:href="@{/cuentas/formCuenta}" class="nav-link">Crear cuenta</a></li>
                     <li><a th:href="@{/login}" class="nav-link">Iniciar sesión</a></li>
                 </ul>
             </div>
@@ -40,7 +41,7 @@
 </header>
 
 <section class="hero">
-    <h1 class="hiddenTitle">Gestiona tu Ansiedad, Recupera tu Bienestar</h1>
+    <h1 class="hiddenTitle">Gestiona tu ansiedad, recupera tu bienestar</h1>
     <p class="hiddenParagraph">Programas especializados para estudiantes y profesionales que buscan equilibrio y productividad.</p>
     <a href="#contact" class="btn-primary">Comienza ahora</a>
 </section>
@@ -89,7 +90,7 @@
 
     <!--encabezado principal-->
     <section id="hero" class="section section-hero">
-        <h1 class="title hiddenTitle">Gestión de Ansiedad Laboral y Estudiantil</h1>
+        <h1 class="title hiddenTitle">Gestión de ansiedad laboral y estudiantil</h1>
         <p class="introText hiddenParagraph">Brindamos herramientas prácticas y acompañamiento profesional para enfrentar el estrés y la ansiedad
             en entornos laborales y académicos, promoviendo el bienestar integral y la productividad.
         </p>
@@ -145,25 +146,25 @@
 
             <div class="serviceCard">
                 <img th:src="@{images/psicologia.png}" alt="Orientación psicológica" class="serviceIcon">
-                <h3>Orientación Psicológica</h3>
+                <h3>Orientación psicológica</h3>
                 <p>Acompañamiento profesional personalizado para el manejo del estrés y la ansiedad.</p>
             </div>
 
             <div class="serviceCard">
                 <img th:src="@{images/taller.png}" alt="Talleres grupales" class="serviceIcon">
-                <h3>Talleres Grupales</h3>
+                <h3>Talleres grupales</h3>
                 <p>Sesiones prácticas enfocadas en técnicas de relajación y trabajo emocional.</p>
             </div>
 
             <div class="serviceCard">
                 <img th:src="@{images/estudiante.png}" alt="Apoyo académico" class="serviceIcon">
-                <h3>Apoyo Académico</h3>
+                <h3>Apoyo académico</h3>
                 <p>Programas especiales para estudiantes en periodos de exámenes y alta presión.</p>
             </div>
 
             <div class="serviceCard">
                 <img th:src="@{images/recursos.png}" alt="Recursos digitales" class="serviceIcon">
-                <h3>Recursos Digitales</h3>
+                <h3>Recursos digitales</h3>
                 <p>Guías, audios y ejercicios diseñados para la autorregulación emocional.</p>
             </div>
 
@@ -245,11 +246,11 @@
 
     <!--contacto-->
     <section id="contact" class="section section-contact">
-        <h2 class="subtitle hiddenSubtitle">Contáctanos</h2>
+        <h2 class="subtitle hiddenSubtitle">Test</h2>
         <p class="textos hiddenParagraph">
-            ¿Quieres más información o agendar una sesión? Escríbenos y empieza tu camino hacia una vida más tranquila.
+            ¿Quieres realizar un test? Presiona el botón y empieza un test de ansiedad ahora.
         </p>
-        <a id="contactButton" href="#contact-form">Solicitar información</a>
+        <a id="contactButton" th:href="@{/usuarios/formUsuario}">Comenzar test</a>
     </section>
 </main>
 
