@@ -9,7 +9,7 @@ body{
 
 body::before {
   content: "";
-  position: fixed; /* cubre toda la pantalla */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -21,8 +21,8 @@ body::before {
     #F5F7FA 8px,
     #F5F7FA 40px
   );
-  opacity: 0.08; /* solo afecta al pseudo-elemento */
-  z-index: -1; /* queda detrás del contenido */
+  opacity: 0.08;
+  z-index: -1;
 }
 
 /*barra de navegacion*/
