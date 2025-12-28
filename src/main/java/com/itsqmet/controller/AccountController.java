@@ -28,7 +28,9 @@ public class AccountController {
     //guardar
     //llamar al formulario
     @GetMapping("/formCuenta")
-    public String crearCuenta(){
+    public String crearCuenta(Model model){
+        Account account = new Account();
+        model.addAttribute("account", account);
         return "pages/userRegister";
     }
 
@@ -48,7 +50,7 @@ public class AccountController {
     public String actualizarCuenta(@PathVariable Long id, Model model){
         Optional<Account> account = accountService.buscarUserById(id);
         model.addAttribute("account", account);
-        return "pages/userForm";
+        return "pages/userRegister";
     }
 
     //eliminar

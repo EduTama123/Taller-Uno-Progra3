@@ -27,7 +27,7 @@ public class SecurityConfig {
                         .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
                         //asignar privilegio por roles
                         .requestMatchers("/cuentas/**", "/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/test/**").hasAnyRole("ADMIN", "USUARIO", "ESPECIALISTA")
+                        .requestMatchers("/test/**", "/usuarios").hasAnyRole("ADMIN", "USUARIO", "ESPECIALISTA")
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form

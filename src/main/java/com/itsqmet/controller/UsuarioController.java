@@ -46,7 +46,7 @@ public class UsuarioController {
         } else {
             usuarioService.guardarUsuario(usuario);
         }
-        return "redirect:/usuarios";
+        return "redirect:/test/formTest";
     }
 
     // Actualizar (SOLO carga el formulario con datos)

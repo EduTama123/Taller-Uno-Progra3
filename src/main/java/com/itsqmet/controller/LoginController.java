@@ -30,7 +30,7 @@ public class LoginController {
         } else if (role.equals("ROLE_ESPECIALISTA")){
             return "redirect:/test";
         }else if (role.equals("ROLE_USUARIO")){
-            return "redirect:/test";
+            return "redirect:/usuarios/formUsuario";
         }
         //parametro error por default
         return "redirect:/login?error";
