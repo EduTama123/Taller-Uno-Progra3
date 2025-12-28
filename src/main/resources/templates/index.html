@@ -27,11 +27,11 @@
         <div class="max-w-screen-xl px-4 py-3 mx-auto">
             <div class="flex items-center justify-center">
                 <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
-                    <li><a th:href="@{/inicio}" class="nav-link" aria-current="page">Home</a></li>
-                    <li><a th:href="@{/usuarios}" class="nav-link">Tabla usuarios</a></li>
-                    <li><a th:href="@{/usuarios/formUsuario}" class="nav-link">Formulario</a></li>
-                    <li><a th:href="@{/test}" class="nav-link">Historial de test</a></li>
-                    <li><a th:href="@{/test/formTest}" class="nav-link">Test</a></li>
+<!--                    <li><a th:href="@{/inicio}" class="nav-link" aria-current="page">Home</a></li>-->
+<!--                    <li><a th:href="@{/usuarios}" class="nav-link">Tabla usuarios</a></li>-->
+<!--                    <li><a th:href="@{/usuarios/formUsuario}" class="nav-link">Formulario</a></li>-->
+<!--                    <li><a th:href="@{/test}" class="nav-link">Historial de test</a></li>-->
+<!--                    <li><a th:href="@{/test/formTest}" class="nav-link">Test</a></li>-->
                     <li><a th:href="@{/cuentas/formCuenta}" class="nav-link">Crear cuenta</a></li>
                     <li><a th:href="@{/login}" class="nav-link">Iniciar sesión</a></li>
                 </ul>
@@ -250,7 +250,7 @@
         <p class="textos hiddenParagraph">
             ¿Quieres realizar un test? Presiona el botón y empieza un test de ansiedad ahora.
         </p>
-        <a id="contactButton" th:href="@{/usuarios/formUsuario}">Comenzar test</a>
+        <a id="contactButton" th:href="@{/login}">Comenzar test</a>
     </section>
 </main>
 
