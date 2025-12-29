@@ -16,7 +16,7 @@
   <nav class="navbar-top">
     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
       <a class="logo flex items-center space-x-3 rtl:space-x-reverse">
-        <img th:src="@{images/pruebaEstres.png}" class="h-7" alt="CureStress Logo" />
+        <img th:src="@{/images/pruebaEstres.png}" class="h-7" alt="CureStress Logo" />
         <span class="self-center text-xl font-semibold whitespace-nowrap">CureStress</span>
       </a>
       <form th:action="@{/logout}" method="post">
@@ -135,9 +135,15 @@
   </form>
 
   <!-- Nota informativa -->
-  <div class="mt-8 p-4 bg-blue-50 rounded-lg">
-    <h3 class="font-bold text-blue-800 mb-2">💡 Consejos para especialistas:</h3>
-    <ul class="list-disc pl-5 text-blue-700 space-y-1">
+  <div class="mt-8 p-4 bg-green-50 rounded-lg border-green-200">
+    <h3 class="font-bold text-green-800 mb-2 flex items-center gap-2">
+      <!-- Ícono de foco/idea de Google Material Icons -->
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6A4.997 4.997 0 0 1 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"/>
+      </svg>
+      Consejos para especialistas:
+    </h3>
+    <ul class="list-disc pl-6 text-green-700 space-y-1 ml-2">
       <li>Las recomendaciones deben ser específicas para cada nivel de ansiedad</li>
       <li>Usa un lenguaje claro y accesible para los usuarios</li>
       <li>Incluye ejercicios prácticos que puedan realizarse en casa</li>

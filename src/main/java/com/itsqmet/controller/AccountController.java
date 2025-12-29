@@ -50,7 +50,7 @@ public class AccountController {
     public String actualizarCuenta(@PathVariable Long id, Model model){
         Optional<Account> account = accountService.buscarUserById(id);
         model.addAttribute("account", account);
-        return "pages/userForm";
+        return "pages/userRegister";
     }
 
     //eliminar

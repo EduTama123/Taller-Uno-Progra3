@@ -23,11 +23,15 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
+                        // RUTAS PÚBLICAS
                         .requestMatchers("/", "/inicio", "/login", "/cuentas/formCuenta",
                                 "/cuentas/registrarCuenta", "/login/postLogin").permitAll()
                         .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
 
-                        // NUEVAS RUTAS PARA PANELES
+                        // BLOQUEAR INICIO DESDE PANELES
+                        .requestMatchers("/inicio").authenticated() // Ya no es público cuando estás logueado
+
+                        // PANELES
                         .requestMatchers("/admin").hasRole("ADMIN")
                         .requestMatchers("/usuario").hasRole("USUARIO")
                         .requestMatchers("/especialista").hasRole("ESPECIALISTA")
@@ -36,14 +40,14 @@ public class SecurityConfig {
                         .requestMatchers("/cuentas/**", "/admin/**").hasRole("ADMIN")
                         .requestMatchers("/test/**").hasAnyRole("ADMIN", "USUARIO", "ESPECIALISTA")
 
-                        // PERMISOS ESPECÍFICOS PARA /usuarios
-                        .requestMatchers("/usuarios/formUsuario").hasAnyRole("ADMIN", "ESPECIALISTA", "USUARIO")
-                        .requestMatchers("/usuarios/registrarUsuario").hasAnyRole("ADMIN", "ESPECIALISTA", "USUARIO")
+                        //ESPECIALISTA NO PUEDE VER/MODIFICAR USUARIOS
+                        .requestMatchers("/usuarios/formUsuario").hasAnyRole("ADMIN", "USUARIO")
+                        .requestMatchers("/usuarios/registrarUsuario").hasAnyRole("ADMIN", "USUARIO")
                         .requestMatchers("/usuarios/editarUsuario/**").hasAnyRole("ADMIN", "ESPECIALISTA")
                         .requestMatchers("/usuarios/eliminarUsuario/**").hasRole("ADMIN")
-                        .requestMatchers("/usuarios/**").hasAnyRole("ADMIN", "ESPECIALISTA")
+                        .requestMatchers("/usuarios").hasAnyRole("ADMIN") // Solo ADMIN ve lista de usuarios
 
-                        // NUEVAS RUTAS PARA RECOMENDACIONES
+                        // RECOMENDACIONES
                         .requestMatchers("/recomendaciones").hasAnyRole("ADMIN", "ESPECIALISTA", "USUARIO")
                         .requestMatchers("/recomendaciones/form").hasAnyRole("ADMIN", "ESPECIALISTA")
                         .requestMatchers("/recomendaciones/editar/**").hasAnyRole("ADMIN", "ESPECIALISTA")
