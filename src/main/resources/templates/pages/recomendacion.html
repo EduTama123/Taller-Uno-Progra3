@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Recomendaciones para la Ansiedad</title>
+  <!--FAVICON-->
+  <link rel="icon" th:href="@{/images/pruebaEstres.png}">
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+  <link rel="stylesheet" th:href="@{/css/recomendacion.css}">
+</head>
+<body>
+<!--barra de navegacion-->
+<header class="sticky w-full top-0 z-50">
+  <!--primer nav-->
+  <nav class="navbar-top">
+    <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
+      <a class="logo flex items-center space-x-3 rtl:space-x-reverse">
+        <img th:src="@{images/pruebaEstres.png}" class="h-7" alt="CureStress Logo" />
+        <span class="self-center text-xl font-semibold whitespace-nowrap">CureStress</span>
+      </a>
+      <form th:action="@{/logout}" method="post">
+        <button type="submit"
+                class="rounded-md bg-gray-600 px-4 py-2 text-sm font-medium text-white hover:bg-gray-700">
+          Cerrar sesión
+        </button>
+      </form>
+    </div>
+  </nav>
+
+  <!--segundo nav-->
+  <nav class="navbar-bottom">
+    <div class="max-w-screen-xl px-4 py-3 mx-auto">
+      <div class="flex items-center justify-center">
+        <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
+          <li><a th:href="@{/inicio}" class="nav-link" aria-current="page">Home</a></li>
+          <li><a th:href="@{/usuario}" class="nav-link">Panel Usuario</a></li>
+          <li><a th:href="@{/especialista}" class="nav-link">Panel Especialista</a></li>
+          <li><a th:href="@{/admin}" class="nav-link">Panel Admin</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- PÁGINA DE RECOMENDACIONES -->
+<div class="max-w-6xl mx-auto p-6">
+  <div class="text-center mb-10">
+    <h1 class="text-4xl font-bold mb-4">Recomendaciones para Manejar la Ansiedad</h1>
+    <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+      Consejos especializados según tu nivel de ansiedad.
+    </p>
+
+    <div class="mt-6">
+      <a th:href="@{/recomendaciones/form}"
+         class="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+        </svg>
+        Añadir/Editar Recomendaciones
+      </a>
+    </div>
+  </div>
+
+  <!-- Mensaje si no hay recomendaciones -->
+  <div th:if="${recomendaciones.isEmpty()}" class="text-center py-12">
+    <div class="text-gray-400 mb-4">
+      <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+    </div>
+    <h3 class="text-xl font-semibold text-gray-600 mb-2">No hay recomendaciones disponibles</h3>
+    <p class="text-gray-500">Los especialistas aún no han creado recomendaciones.</p>
+    <a th:href="@{/recomendaciones/form}"
+       class="mt-4 inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
+      Crear Primera Recomendación
+    </a>
+  </div>
+
+  <!-- Acordeón de recomendaciones -->
+  <div th:unless="${recomendaciones.isEmpty()}" class="space-y-4">
+    <div th:each="rec : ${recomendaciones}" class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <div class="flex items-center gap-4">
+                    <span class="level-badge"
+                          th:classappend="'level-' + ${rec.nivelAnsiedad.toLowerCase()}">
+                        Ansiedad <span th:text="${rec.nivelAnsiedad}"></span>
+                    </span>
+          <span class="text-lg">
+                        Recomendaciones para ansiedad
+                        <span th:text="${rec.nivelAnsiedad}"></span>
+                    </span>
+        </div>
+        <svg class="w-5 h-5 transform transition-transform">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M19 9l-7 7-7-7"/>
+        </svg>
+      </div>
+
+      <div class="accordion-content">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-white p-4 rounded-lg border">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                <span class="text-blue-600 font-bold">1</span>
+              </div>
+              <h3 class="font-semibold">Ejercicio de respiración</h3>
+            </div>
+            <p class="text-gray-700" th:text="${rec.recomendacion1}"></p>
+          </div>
+
+          <div class="bg-white p-4 rounded-lg border">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                <span class="text-green-600 font-bold">2</span>
+              </div>
+              <h3 class="font-semibold">Actividad física</h3>
+            </div>
+            <p class="text-gray-700" th:text="${rec.recomendacion2}"></p>
+          </div>
+
+          <div class="bg-white p-4 rounded-lg border">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                <span class="text-purple-600 font-bold">3</span>
+              </div>
+              <h3 class="font-semibold">Hábitos de sueño</h3>
+            </div>
+            <p class="text-gray-700" th:text="${rec.recomendacion3}"></p>
+          </div>
+
+          <div class="bg-white p-4 rounded-lg border">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center">
+                <span class="text-yellow-600 font-bold">4</span>
+              </div>
+              <h3 class="font-semibold">Alimentación</h3>
+            </div>
+            <p class="text-gray-700" th:text="${rec.recomendacion4}"></p>
+          </div>
+
+          <div class="bg-white p-4 rounded-lg border md:col-span-2">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                <span class="text-red-600 font-bold">5</span>
+              </div>
+              <h3 class="font-semibold">Técnica de relajación</h3>
+            </div>
+            <p class="text-gray-700" th:text="${rec.recomendacion5}"></p>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-6 border-t flex justify-end gap-3">
+          <a th:href="@{/recomendaciones/editar/{nivel}(nivel=${rec.nivelAnsiedad})}"
+             class="px-4 py-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition">
+            Editar
+          </a>
+          <a th:href="@{/recomendaciones/eliminar/{id}(id=${rec.id})}"
+             class="px-4 py-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition"
+             onclick="return confirm('¿Eliminar?')">
+            Eliminar
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script th:src="@{/js/index.js}"></script>
+<script th:src="@{/js/recomendacion.js}"></script>
+</body>
+</html>

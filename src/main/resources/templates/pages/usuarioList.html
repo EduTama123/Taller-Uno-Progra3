@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Usuarios</title>
+    <!--FAVICON-->
+    <link rel="icon" th:href="@{/images/pruebaEstres.png}">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+    <link rel="stylesheet" th:href="@{/css/estilosTabla.css}">
+</head>
+<body>
+<header class="sticky w-full top-0 z-50">
+    <!-- Primer nav -->
+    <nav class="navbar-top">
+        <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
+            <a class="logo flex items-center space-x-3 rtl:space-x-reverse">
+                <img th:src="@{/images/pruebaEstres.png}" class="h-7" alt="CureStress Logo" />
+                <span class="self-center text-xl font-semibold whitespace-nowrap">CureStress</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Segundo nav -->
+    <nav class="navbar-bottom">
+        <div class="max-w-screen-xl px-4 py-3 mx-auto">
+            <div class="flex items-center justify-center">
+                <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
+                    <li><a th:href="@{/inicio}" class="nav-link" aria-current="page">Home</a></li>
+                    <li><a th:href="@{/usuarios/formUsuario}" class="nav-link">Formulario</a></li>
+                    <li><a th:href="@{/test/formTest}" class="nav-link">Test</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="form-header">
+    <h1 class="title form-title hiddenTitle">Lista de Usuarios</h1>
+</div>
+<div class="pageContainer">
+    <!-- Formulario de búsqueda -->
+    <div class="search-container">
+
+        <form th:action="@{/usuarios}" method="get" class="search-form">
+            <label for="buscar" class="search-label">Buscar por nombre o cédula:</label><br>
+            <input type="text" id="buscar" name="buscar" th:value="${buscar}" placeholder="Ingrese nombre o cédula" class="search-input">
+            <button type="submit" class="btn-search">Buscar</button>
+            <a th:href="@{/usuarios}" class="btn-link">
+                <button type="button" class="btn-showall">Mostrar Todos</button>
+            </a>
+        </form>
+    </div>
+
+    <br>
+
+    <!-- Enlace para crear nuevo usuario -->
+    <div class="newuser-container">
+        <a th:href="@{/usuarios/formUsuario}" class="btn-link">
+            <button class="btn-newuser">Nuevo Usuario</button>
+        </a>
+    </div>
+
+    <br>
+
+    <!-- Tabla de usuarios -->
+    <table class="user-table" border="1">
+        <thead class="table-head">
+        <tr>
+            <th class="table-header">ID</th>
+            <th class="table-header">Nombre</th>
+            <th class="table-header">Apellido</th>
+            <th class="table-header">Cédula</th>
+            <th class="table-header">Dirección</th>
+            <th class="table-header">Teléfono</th>
+            <th class="table-header">Edad</th>
+            <th class="table-header">Acciones</th>
+        </tr>
+        </thead>
+        <tbody class="table-body">
+        <tr th:each="usuario : ${usuarios}" class="table-row">
+            <td th:text="${usuario.id}" class="table-cell"></td>
+            <td th:text="${usuario.nombre}" class="table-cell"></td>
+            <td th:text="${usuario.apellido}" class="table-cell"></td>
+            <td th:text="${usuario.cedula}" class="table-cell"></td>
+            <td th:text="${usuario.direccion}" class="table-cell"></td>
+            <td th:text="${usuario.telefono}" class="table-cell"></td>
+            <td th:text="${usuario.edad}" class="table-cell"></td>
+            <td class="table-actions">
+                <!-- Enlace para editar -->
+                <a th:href="@{/usuarios/editarUsuario/}+${usuario.id}" class="btn-link">
+                    <button class="btn-edit">Editar</button>
+                </a>
+
+                <!-- Formulario para eliminar -->
+                <form th:action="@{/usuarios/eliminarUsuario/}+${usuario.id}" method="post" style="display:inline" class="delete-form">
+                    <input type="hidden" name="_method" value="delete">
+                    <button type="submit" class="btn-delete" onclick="return confirm('¿Está seguro de eliminar este usuario?')">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<!--footer-->
+<footer class="footerBg">
+    <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+        <div class="md:flex md:justify-between">
+            <div class="mb-6 md:mb-0">
+                <a class="flex items-center">
+                    <img th:src="@{/images/pruebaEstres.png}" class="h-7 me-3" alt="FlowBite Logo" />
+                    <span class="text-heading self-center text-2xl font-semibold whitespace-nowrap">CureStress</span>
+                </a>
+            </div>
+            <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+                <div>
+                    <h2 class="mb-6 text-sm font-semibold text-heading uppercase">Índice</h2>
+                    <ul class="text-body font-medium">
+                        <li class="mb-4">
+                            <a th:href="@{/inicio}" class="hover:underline">Inicio</a>
+                        </li>
+                        <li class="mb-4">
+                            <a th:href="@{/usuarios}" class="hover:underline">Tabla usuarios</a>
+                        </li>
+                        <li class="mb-4">
+                            <a th:href="@{/usuarios/formUsuario}" class="hover:underline">Formulario</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="mb-6 text-sm font-semibold text-heading uppercase">Siguenos</h2>
+                    <ul class="text-body font-medium">
+                        <li class="mb-4">
+                            <a target="_blank" href="https://www.instagram.com/" class="hover:underline ">Instagram</a>
+                        </li>
+                        <li class="mb-4">
+                            <a target="_blank" href="https://www.youtube.com/" class="hover:underline">YouTube</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr class="my-6 border-default sm:mx-auto lg:my-8" />
+        <div class="sm:flex sm:items-center sm:justify-between">
+          <span class="text-sm text-body sm:text-center">© 2025 <a class="hover:underline">CureStress™</a>. All Rights Reserved.
+          </span>
+            <div class="flex mt-4 sm:justify-center sm:mt-0">
+                <a target="_blank" th:href="@{https://github.com/EduTama123/Taller-Uno-Progra3.git}" class="text-body hover:text-heading ms-5">
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.006 2a9.847 9.847 0 0 0-6.484 2.44 10.32 10.32 0 0 0-3.393 6.17 10.48 10.48 0 0 0 1.317 6.955 10.045 10.045 0 0 0 5.4 4.418c.504.095.683-.223.683-.494 0-.245-.01-1.052-.014-1.908-2.78.62-3.366-1.21-3.366-1.21a2.711 2.711 0 0 0-1.11-1.5c-.907-.637.07-.621.07-.621.317.044.62.163.885.346.266.183.487.426.647.71.135.253.318.476.538.655a2.079 2.079 0 0 0 2.37.196c.045-.52.27-1.006.635-1.37-2.219-.259-4.554-1.138-4.554-5.07a4.022 4.022 0 0 1 1.031-2.75 3.77 3.77 0 0 1 .096-2.713s.839-.275 2.749 1.05a9.26 9.26 0 0 1 5.004 0c1.906-1.325 2.74-1.05 2.74-1.05.37.858.406 1.828.101 2.713a4.017 4.017 0 0 1 1.029 2.75c0 3.939-2.339 4.805-4.564 5.058a2.471 2.471 0 0 1 .679 1.897c0 1.372-.012 2.477-.012 2.814 0 .272.18.592.687.492a10.05 10.05 0 0 0 5.388-4.421 10.473 10.473 0 0 0 1.313-6.948 10.32 10.32 0 0 0-3.39-6.165A9.847 9.847 0 0 0 12.007 2Z" clip-rule="evenodd"/></svg>
+                    <span class="sr-only">Enlace repo</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+<script th:src="@{/js/index.js}"></script>
+</body>
+</html>

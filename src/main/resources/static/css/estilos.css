@@ -1,0 +1,106 @@
+/*formulario*/
+.form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-top: 1rem;
+}
+
+.form-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2C3E50;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+
+/*contenedor general*/
+.user-form {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #F9FAFB;
+  padding: 2rem;
+  margin-bottom: 4rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+/*campos*/
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+/*etiquetas*/
+.form-label {
+  font-weight: 600;
+  color: #34495E;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/*inputs*/
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input:focus {
+  border-color: #27AE60;
+  box-shadow: 0 0 6px rgba(39, 174, 96, 0.3);
+  outline: none;
+}
+
+/*ayuda*/
+.form-hint {
+  font-size: 0.85rem;
+  color: #777;
+  margin-top: 0.3rem;
+}
+
+/*botones*/
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.btn-submit {
+  background-color:  #5FA58A;
+  color: #fff;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-submit:hover {
+  background-color: #219150;
+  transform: translateY(-2px);
+}
+
+.btn-cancel {
+  background-color: #E0E0E0;
+  color: #333;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-cancel:hover {
+  background-color: #BDBDBD;
+  transform: translateY(-2px);
+}
+
+/*enlace boton*/
+.btn-link {
+  text-decoration: none;
+}
